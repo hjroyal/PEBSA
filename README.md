@@ -17,7 +17,7 @@ The project is continuously optimized to achieve product-level application.
 * uC-OS3 v3.08.02
 
 ### Hardware
-* ![YX28377D_ProBoard_V1.0](./myProj/docs/yxdsp-f28377d.jpg)
+* ![YX28377D_ProBoard_V1.0](./TMS320F28377D-UCOS3-CPU1/myProj/docs/yxdsp-f28377d.jpg)
 
 ### TODO List:
 - [✓] uC/OS3 transplantation
