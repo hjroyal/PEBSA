@@ -1,4 +1,4 @@
-PEBSA : Power electronics basic software architecture.
+PEBSA : Power Electronics Basic Software Architecture
 =============================
 TMS320F28377D x uC-OS3 
 
@@ -6,7 +6,7 @@ This is a TI CCS project for TMS320F28377D with uC-OS3.
 
 The project is configured to use the F28377D CPU1 and CPU2.
 
-The project is continuously optimized to achieve product-level application.
+The project is **continuously optimized** to achieve product-level application.
 
 
 ### Dependencies
@@ -36,4 +36,6 @@ The project is continuously optimized to achieve product-level application.
 - [x] CPU1 and CPU2 coexistence
 
 
+### Diagram
 
+- [x] TODO
