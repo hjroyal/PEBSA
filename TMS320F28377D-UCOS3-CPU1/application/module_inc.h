@@ -51,4 +51,8 @@
 #include "display_seg.h"
 #include "control_parameter.h"
 
-#endif
+//calculate
+#include "software_filter.h"
+
+
+#endif /* MODULE_INC_H */
