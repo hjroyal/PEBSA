@@ -4,5 +4,8 @@
       "clang-format.style": "file",
       "clang-format.executable": "C:app\\c_cpp\\llvm\bin\\clang-format.exe",
       "clang-format.fallbackStyle": "LLVM"
+    },
+    "[cpp]": {
+      "editor.defaultFormatter": "xaver.clang-format"
     }
 }

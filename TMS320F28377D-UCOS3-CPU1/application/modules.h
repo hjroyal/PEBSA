@@ -40,6 +40,8 @@
 #include "com_sci.h"
 #include "com_ex_sram.h"
 #include "com_ex_flash.h"
+#include "com_modbus.h"
+
 
 //sense
 #include "sense_adc.h"

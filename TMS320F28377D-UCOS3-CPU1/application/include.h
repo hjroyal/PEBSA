@@ -34,9 +34,10 @@
 #include "device.h"
 
 //application
-#include "module_inc.h"
+#include "modules.h"
 #include "app.h"
 #include "nr_micro_shell.h"
+#include "stdint.h"
 
 #define PEBSA_APP_VER  100      /* Version of app(Vx.yy mult. by 100)    */
 
