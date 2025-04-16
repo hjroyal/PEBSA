@@ -18,18 +18,43 @@
 #define DISPLAY_SEG_H
 
 
-#define   SBIT3     GpioDataRegs.GPBDAT.bit.GPIO58
-#define   SBIT2     GpioDataRegs.GPBDAT.bit.GPIO59
-#define   SBIT1     GpioDataRegs.GPBDAT.bit.GPIO60
-#define   SBIT0     GpioDataRegs.GPBDAT.bit.GPIO61
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef HOST_SIM
+/// Simulation platform head file
+#else
+/// Real platform head file
+#endif
+
+#include "include.h"
+
+typedef struct {
+    u16 *in_dsp_temp;       ///>hj 20250416 板载DSP温度
+    u16 *in_dth11_temp;     ///>hj 20250416 DTH11温度
+    u16 parm_sensor_sel;    ///>hj 20250411 温度传感器选择 0:板载DSP 1:DTH11
+    u16 parm_en;            ///>hj 20250411 模块使能
+} SEG_DSIPLAY;
+
+void parmInitSegDisplay(SEG_DSIPLAY *dp);
+void initSegDisplay    (SEG_DSIPLAY *dp);
+void runSegDisplay     (SEG_DSIPLAY *dp);   //会降低实时性
 
 
 
-void SEG_DATA(unsigned char d);
-void set_seg(unsigned char d[4]);
+#if defined(HOST_SIM)
+// Simulation platform function
+#endif
 
-extern unsigned char const SEG_TABLE[]; //数码管显示0~9的编码
-void display_temp(int16 temp);
+#ifdef __cplusplus
+}
+#endif
+
+
+
+
+
 
 
 #endif //__DISPLAY_SEG__

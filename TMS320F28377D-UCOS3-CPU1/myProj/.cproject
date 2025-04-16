@@ -46,9 +46,9 @@
                                 <option id="com.ti.ccstudio.buildDefinitions.C2000_20.2.compilerID.TMU_SUPPORT.2076833199" superClass="com.ti.ccstudio.buildDefinitions.C2000_20.2.compilerID.TMU_SUPPORT" value="com.ti.ccstudio.buildDefinitions.C2000_20.2.compilerID.TMU_SUPPORT.tmu0" valueType="enumerated"/>
                                 <option id="com.ti.ccstudio.buildDefinitions.C2000_20.2.compilerID.INCLUDE_PATH.1868581092" superClass="com.ti.ccstudio.buildDefinitions.C2000_20.2.compilerID.INCLUDE_PATH" valueType="includePath">
                                     <listOptionValue value="${workspace_loc:/${ProjName}/application}"/>
-                                    <listOptionValue value="${workspace_loc:/${ProjName}/drivers/include/driverlib/inc}"/>
-                                    <listOptionValue value="${workspace_loc:/${ProjName}/drivers/include/driverlib}"/>
-                                    <listOptionValue value="${workspace_loc:/${ProjName}/drivers/include}"/>
+                                    <listOptionValue value="${workspace_loc:/${ProjName}/drivers/tiinc/driverlib/inc}"/>
+                                    <listOptionValue value="${workspace_loc:/${ProjName}/drivers/tiinc/driverlib}"/>
+                                    <listOptionValue value="${workspace_loc:/${ProjName}/drivers/tiinc}"/>
                                     <listOptionValue value="${workspace_loc:/${ProjName}/modules/calculate}"/>
                                     <listOptionValue value="${workspace_loc:/${ProjName}/drivers/bsp}"/>
                                     <listOptionValue value="${workspace_loc:/${ProjName}/modules/control}"/>

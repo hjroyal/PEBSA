@@ -15,15 +15,8 @@
  */
 #include "include.h"
 
-//全局变量定义
-u16 guwOs1msCnt =0;
 
-volatile u32 adcAResult0 = 1; 
-volatile u32 adcAResult1 = 1;
-volatile u32 adcAResult2 = 1;
-
-volatile u32 sensorSample = 0;
-u32 sensorTemp = 0;
+u16 gOS1msCnts = 0;
 
 
 //函数声明
@@ -99,33 +92,18 @@ void InitEPWM_BSP(void) {
   EDIS;
 }
 
-interrupt void epwm1_isr(void) {
 
-  sensorSample = ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER0);
-  sensorTemp = GetTemperatureC(sensorSample);
+void OSTimePWMTrigger(void){
+    //确保系统可以正确响应中断并继续运行
+    EPwm1Regs.ETCLR.bit.INT = 1;
+    PieCtrlRegs.PIEACK.all = PIEACK_GROUP3;
 
-  adcAResult1 = ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER1);
-  adcAResult2 = ((ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER2) +
-                  ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER3) +
-                  ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER4) +
-                  ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER5) +
-                  ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER6) +
-                  ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER7) +
-                  ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER8) +
-                  ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER9)) >>
-                 3);
-
-  //-----DO NOT MODIFY THE FOLLOWING CODE-----//
-  EPwm1Regs.ETCLR.bit.INT = 1;
-  PieCtrlRegs.PIEACK.all = PIEACK_GROUP3;
-
-  // generate 1ms ostimetick
-  guwOs1msCnt++;
-  if (guwOs1msCnt >= 16) {
-    guwOs1msCnt = 0;
-    OSIntEnter();
-    OSTimeTick();
-    OSIntExit();
-  }
-  //-----DO NOT MODIFY THE ABOVE CODE-----//
+    // generate 1ms ostimetick
+    gOS1msCnts++;
+    if (gOS1msCnts >= 16) {
+        gOS1msCnts = 0;
+        OSIntEnter();
+        OSTimeTick();
+        OSIntExit();
+    }
 }

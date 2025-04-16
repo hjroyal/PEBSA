@@ -17,14 +17,36 @@
 #ifndef SENSE_H
 #define SENSE_H
 
-/*
-*********************************************************************************************************
-*                                              DATA TYPES
-*                                         (Compiler Specific)
-*********************************************************************************************************
-*/
-
-
+#ifdef __cplusplus
+extern "C" {
 #endif
+
+#ifdef HOST_SIM
+/// Simulation platform head file
+#else
+/// Real platform head file
+#endif
+
+#include "include.h"
+
+typedef struct {
+    u16 out_dsp_temp;
+    u16 out_adc_a1;
+    u16 out_adc_a2;
+} ADC_DATA;
+
+void parmInitADCSense(ADC_DATA *dp);
+void initADCSense(ADC_DATA *dp);
+void runADCSense(ADC_DATA *dp);
+
+#if defined(HOST_SIM)
+// Simulation platform function
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* SENSE_H */
 
 

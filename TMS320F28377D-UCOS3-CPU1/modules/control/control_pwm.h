@@ -17,7 +17,25 @@
 #ifndef CONTROL_PWM_H
 #define CONTROL_PWM_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
+#ifdef HOST_SIM
+/// Simulation platform head file
+#else
+/// Real platform head file
+#endif
+
+
+
+#if defined(HOST_SIM)
+// Simulation platform function
+#endif
+
+#ifdef __cplusplus
+}
+#endif
 
 
 

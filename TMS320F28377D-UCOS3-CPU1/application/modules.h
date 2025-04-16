@@ -30,11 +30,9 @@
 
 //control
 #include "control_pwm.h"
-
+#include "control_step_motor.h"
 //protection
-#include "action_led.h"
-#include "action_beep.h"
-#include "action_relay.h"
+
 
 //communication
 #include "com_sci.h"

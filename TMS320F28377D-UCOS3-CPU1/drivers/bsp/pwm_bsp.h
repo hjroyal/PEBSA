@@ -36,13 +36,7 @@
 
 
 //对外部文件开放全局变量声明
-extern u16 guwOs1msCnt;
 
-extern volatile u32 adcAResult0; 
-extern volatile u32 adcAResult1;
-extern volatile u32 adcAResult2;
-
-extern u32 sensorTemp;
 /*
 *********************************************************************************************************
 *                                              FUNCTION PROTOTYPES
@@ -52,7 +46,7 @@ extern u32 sensorTemp;
 //对外部文件开放函数声明
 void InitEPWM_BSP(void);
 interrupt void epwm1_isr(void);
-
+void OSTimePWMTrigger(void);
 
 #endif   /* PWM_BSP_H */
 
