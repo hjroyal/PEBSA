@@ -53,6 +53,6 @@
 
 //calculate
 #include "software_filter.h"
-#include "interpolation.h"
+
 
 #endif /* MODULE_INC_H */

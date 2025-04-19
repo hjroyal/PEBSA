@@ -1,7 +1,7 @@
 ******************************************************************************
              TMS320C2000 Linker PC v20.2.2                     
 ******************************************************************************
->> Linked Wed Apr 16 23:00:48 2025
+>> Linked Sat Apr 19 22:39:54 2025
 
 OUTPUT FILE NAME:   <D:/code/28377d/tms320f28377d/TMS320F28377D-UCOS3-CPU1/myProj/output/TMS320F28377D-CPU1.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 00087fa8
@@ -23,10 +23,10 @@ PAGE 0:
   RAMGS15               0001b000   00001000  00000000  00001000  RWIX
   BEGIN                 00080000   00000002  00000002  00000000  RWIX
   FLASHA                00080002   00001ffe  00000000  00001ffe  RWIX
-  FLASHB                00082000   00002000  00001ffe  00000002  RWIX
+  FLASHB                00082000   00002000  00001ffd  00000003  RWIX
   FLASHC                00084000   00002000  00002000  00000000  RWIX
   FLASHD                00086000   00002000  00002000  00000000  RWIX
-  FLASHE                00088000   00008000  0000085c  000077a4  RWIX
+  FLASHE                00088000   00008000  0000084d  000077b3  RWIX
   FLASHF                00090000   00008000  00001062  00006f9e  RWIX
   FLASHG                00098000   00008000  00000000  00008000  RWIX
   FLASHH                000a0000   00008000  00000000  00008000  RWIX
@@ -153,7 +153,7 @@ SECTION ALLOCATION MAP
  output                                  attributes/
 section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
-.cinit     0    00082000    0000029e     
+.cinit     0    00082000    00000299     
                   00082000    00000093     control_parameter.obj (.cinit:_sg_ParamTable)
                   00082093    00000086     control_parameter.obj (.cinit)
                   00082119    0000002f     app.obj (.cinit)
@@ -178,15 +178,14 @@ section   page    origin      length       input sections
                   0008226a    00000007     F2837xD_struct.obj (.cinit:_SCI)
                   00082271    00000005     rts2800_fpu32.lib : _lock.c.obj (.cinit:__lock)
                   00082276    00000005                       : _lock.c.obj (.cinit:__unlock)
-                  0008227b    00000005     software_filter.obj (.cinit)
-                  00082280    00000004     F2837xD_sci_io.obj (.cinit)
-                  00082284    00000004     pwm_bsp.obj (.cinit)
-                  00082288    00000004     rts2800_fpu32.lib : defs.c.obj (.cinit)
-                  0008228c    00000004                       : errno.c.obj (.cinit)
-                  00082290    00000004                       : fopen.c.obj (.cinit)
-                  00082294    00000004                       : memory.c.obj (.cinit)
-                  00082298    00000004                       : open.c.obj (.cinit)
-                  0008229c    00000002     --HOLE-- [fill = 0]
+                  0008227b    00000004     F2837xD_sci_io.obj (.cinit)
+                  0008227f    00000004     pwm_bsp.obj (.cinit)
+                  00082283    00000004     rts2800_fpu32.lib : defs.c.obj (.cinit)
+                  00082287    00000004                       : errno.c.obj (.cinit)
+                  0008228b    00000004                       : fopen.c.obj (.cinit)
+                  0008228f    00000004                       : memory.c.obj (.cinit)
+                  00082293    00000004                       : open.c.obj (.cinit)
+                  00082297    00000002     --HOLE-- [fill = 0]
 
 .pinit     0    00082000    00000000     UNINITIALIZED
 
@@ -236,15 +235,14 @@ codestart
                   0000c832    00000004     F2837xD_struct.obj (.ebss:_SCI)
                   0000c836    00000004     rts2800_fpu32.lib : memory.c.obj (.ebss)
                   0000c83a    00000002     lib_math.obj (.ebss)
-                  0000c83c    00000002     software_filter.obj (.ebss)
-                  0000c83e    00000001     F2837xD_sci_io.obj (.ebss)
-                  0000c83f    00000001     pwm_bsp.obj (.ebss)
+                  0000c83c    00000001     F2837xD_sci_io.obj (.ebss)
+                  0000c83d    00000001     pwm_bsp.obj (.ebss)
+                  0000c83e    00000001     rts2800_fpu32.lib : defs.c.obj (.ebss)
+                  0000c83f    00000001                       : errno.c.obj (.ebss)
                   0000c840    00000062     control_parameter.obj (.ebss)
-                  0000c8a2    00000001     rts2800_fpu32.lib : defs.c.obj (.ebss)
-                  0000c8a3    00000001                       : errno.c.obj (.ebss)
-                  0000c8a4    00000001                       : fopen.c.obj (.ebss)
-                  0000c8a5    00000001                       : open.c.obj (.ebss)
-                  0000c8a6    0000001a     --HOLE--
+                  0000c8a2    00000001     rts2800_fpu32.lib : fopen.c.obj (.ebss)
+                  0000c8a3    00000001                       : open.c.obj (.ebss)
+                  0000c8a4    0000001c     --HOLE--
                   0000c8c0    00000048                       : host_device.c.obj (.ebss:__device)
                   0000c908    00000032     app.obj (.ebss)
                   0000c93a    00000006     --HOLE--
@@ -317,12 +315,13 @@ CLAscratch
 *          0    00000130    0000000e     
                   00000130    0000000e     nr_micro_shell.obj (.rodata.nr_shell_cmd1.end)
 
-.text.1    0    000822a0    00001d60     
-                  000822a0    00000ce4     rts2800_fpu32.lib : _printfi.c.obj (.text)
-                  00082f84    000007a2     os_task.obj (.text)
-                  00083726    00000746     cot_param.obj (.text)
-                  00083e6c    00000192     os_stat.obj (.text)
-                  00083ffe    00000002     rts2800_fpu32.lib : pre_init.c.obj (.text)
+.text.1    0    0008229c    00001d64     
+                  0008229c    00000ce4     rts2800_fpu32.lib : _printfi.c.obj (.text)
+                  00082f80    000007a2     os_task.obj (.text)
+                  00083722    00000746     cot_param.obj (.text)
+                  00083e68    00000192     os_stat.obj (.text)
+                  00083ffa    00000005     rts2800_fpu32.lib : strcpy.c.obj (.text)
+                  00083fff    00000001     os_cfg_app.obj (.text)
 
 .text.2    0    00084000    00002000     
                   00084000    0000057b     F2837xD_DefaultISR.obj (.text:retain)
@@ -369,10 +368,9 @@ CLAscratch
                   00087ed0    00000071                       : open.c.obj (.text)
                   00087f41    00000067                       : _io_perm.c.obj (.text)
                   00087fa8    00000056                       : boot28.asm.obj (.text)
-                  00087ffe    00000001     os_cfg_app.obj (.text)
-                  00087fff    00000001     rts2800_fpu32.lib : startup.c.obj (.text)
+                  00087ffe    00000002                       : pre_init.c.obj (.text)
 
-.text.4    0    00088000    0000085c     
+.text.4    0    00088000    0000084d     
                   00088000    0000005d     rts2800_fpu32.lib : fclose.c.obj (.text)
                   0008805d    0000005b                       : hostlseek.c.obj (.text)
                   000880b8    0000005a                       : s_frexp.c.obj (.text)
@@ -422,19 +420,18 @@ CLAscratch
                   000887d8    0000000e                       : fd_sub28.asm.obj (.text)
                   000887e6    0000000d                       : memchr.c.obj (.text)
                   000887f3    0000000c                       : strchr.c.obj (.text)
-                  000887ff    0000000b                       : u_div28.asm.obj (.text)
-                  0008880a    0000000a     F2837xD_DevInit.obj (.text:retain)
-                  00088814    0000000a     rts2800_fpu32.lib : strcmp.c.obj (.text)
-                  0008881e    00000009                       : _lock.c.obj (.text)
-                  00088827    00000009                       : fd_neg28.asm.obj (.text)
-                  00088830    00000009                       : wcslen.c.obj (.text)
-                  00088839    00000008     F2837xD_CodeStartBranch.obj (.text)
-                  00088841    00000008     rts2800_fpu32.lib : strlen.c.obj (.text)
-                  00088849    00000007                       : memset.c.obj (.text)
-                  00088850    00000005                       : strcpy.c.obj (.text)
-                  00088855    00000003     F2837xD_DBGIER.obj (.text)
-                  00088858    00000003     rts2800_fpu32.lib : remove.c.obj (.text)
-                  0008885b    00000001     sci_bsp.obj (.text)
+                  000887ff    0000000a     F2837xD_DevInit.obj (.text:retain)
+                  00088809    0000000a     rts2800_fpu32.lib : strcmp.c.obj (.text)
+                  00088813    00000009                       : _lock.c.obj (.text)
+                  0008881c    00000009                       : fd_neg28.asm.obj (.text)
+                  00088825    00000009                       : wcslen.c.obj (.text)
+                  0008882e    00000008     F2837xD_CodeStartBranch.obj (.text)
+                  00088836    00000008     rts2800_fpu32.lib : strlen.c.obj (.text)
+                  0008883e    00000007                       : memset.c.obj (.text)
+                  00088845    00000003     F2837xD_DBGIER.obj (.text)
+                  00088848    00000003     rts2800_fpu32.lib : remove.c.obj (.text)
+                  0008884b    00000001                       : startup.c.obj (.text)
+                  0008884c    00000001     sci_bsp.obj (.text)
 
 .econst    0    00090000    00001062     
                   00090000    000004b0     com_modbus.obj (.econst:.string)
@@ -957,11 +954,6 @@ MODULE SUMMARY
     +--+--------------------------------+-------+------------------+--------------------+
        Total:                           3826    611                10141             
                                                                                      
-    .\modules\calculate\
-       software_filter.obj              0       5                  2                 
-    +--+--------------------------------+-------+------------------+--------------------+
-       Total:                           0       5                  2                 
-                                                                                     
     .\modules\comm\
        com_modbus.obj                   0       1212               1204              
        com_ex_sram.obj                  0       13                 0                 
@@ -1101,7 +1093,6 @@ MODULE SUMMARY
        fd_sub28.asm.obj                 14      0                  0                 
        memchr.c.obj                     13      0                  0                 
        strchr.c.obj                     12      0                  0                 
-       u_div28.asm.obj                  11      0                  0                 
        strcmp.c.obj                     10      0                  0                 
        fd_neg28.asm.obj                 9       0                  0                 
        wcslen.c.obj                     9       0                  0                 
@@ -1113,12 +1104,12 @@ MODULE SUMMARY
        pre_init.c.obj                   2       0                  0                 
        startup.c.obj                    1       0                  0                 
     +--+--------------------------------+-------+------------------+--------------------+
-       Total:                           7921    484                706               
+       Total:                           7910    484                706               
                                                                                      
        Heap:                            0       0                  1024              
        Stack:                           0       0                  512               
     +--+--------------------------------+-------+------------------+--------------------+
-       Grand Total:                     26126   4883               17862             
+       Grand Total:                     26115   4878               17860             
 
 
 GLOBAL DATA SYMBOLS: SORTED BY DATA PAGE
@@ -1403,15 +1394,15 @@ address     data page           name
 0000c82e     320 (0000c800)     _OSPrioTbl
 0000c832     320 (0000c800)     _SCI
 0000c83a     320 (0000c800)     _Math_RandSeedCur
-0000c83e     320 (0000c800)     _deviceOpen
-0000c83f     320 (0000c800)     _gOS1msCnts
+0000c83c     320 (0000c800)     _deviceOpen
+0000c83d     320 (0000c800)     _gOS1msCnts
+0000c83e     320 (0000c800)     ___TI_ft_end
+0000c83f     320 (0000c800)     _errno
 
 0000c84e     321 (0000c840)     _sg_length
 0000c84f     321 (0000c840)     _g_cTest
 
 0000c880     322 (0000c880)     _g_tTestVal
-0000c8a2     322 (0000c880)     ___TI_ft_end
-0000c8a3     322 (0000c880)     _errno
 
 0000c8c0     323 (0000c8c0)     __device
 
@@ -1540,7 +1531,7 @@ abs   00000100  CLA_SCRATCHPAD_SIZE
 0     000884af  FD$$CMP                               
 0     00087bce  FD$$DIV                               
 0     00087ce1  FD$$MPY                               
-0     00088827  FD$$NEG                               
+0     0008881c  FD$$NEG                               
 0     000887d8  FD$$SUB                               
 0     000885e8  FD$$TOI                               
 0     00088669  FD$$TOL                               
@@ -1558,8 +1549,6 @@ abs   00000100  CLA_SCRATCHPAD_SIZE
 0     0008702b  LL$$MOD                               
 0     00088752  LL$$OR                                
 0     0008875a  LL$$XOR                               
-0     000887ff  U$$DIV                                
-0     00088804  U$$MOD                                
 0     000884f6  UL$$DIV                               
 0     000884fd  UL$$MOD                               
 0     0008869a  ULL$$CMP                              
@@ -1800,7 +1789,7 @@ abs   00000000  _Cla1funcsLoadSize
 0     000841f4  _IPC3_ISR                             
 1     00000740  _IPC_CPU1_To_CPU2_GetBuffer           
 1     00000040  _IPC_CPU1_To_CPU2_PutBuffer           
-0     0008880a  _ISR_ILLEGAL                          
+0     000887ff  _ISR_ILLEGAL                          
 0     000872e3  _InitADCSOC                           
 0     000872c8  _InitADC_BSP                          
 0     00085354  _InitAuxPll                           
@@ -1812,7 +1801,7 @@ abs   00000000  _Cla1funcsLoadSize
 0     0008525b  _InitPeripheralClocks                 
 0     00088555  _InitPieCtrl                          
 0     000887b7  _InitPieVectTable                     
-0     0008885b  _InitSCI_BSP                          
+0     0008884c  _InitSCI_BSP                          
 0     00085304  _InitSysCtrl                          
 0     00085039  _InitSysPll                           
 0     000873a7  _InitTempSensor                       
@@ -1846,7 +1835,7 @@ abs   00000000  _Cla1funcsLoadSize
 0     00090f0a  _OSCfg_IdleTaskStkLimit               
 0     00090f0c  _OSCfg_IdleTaskStkSize                
 0     00090f0e  _OSCfg_IdleTaskStkSizeRAM             
-0     00087ffe  _OSCfg_Init                           
+0     00083fff  _OSCfg_Init                           
 1     0000c380  _OSCfg_MsgPool                        
 0     00090f18  _OSCfg_MsgPoolBasePtr                 
 0     00090f04  _OSCfg_MsgPoolSize                    
@@ -1911,10 +1900,10 @@ abs   00000000  _Cla1funcsLoadSize
 0     00085794  _OSSchedUnlock                        
 0     00085725  _OSStart                              
 0     00087ab1  _OSStartHighRdy                       
-0     00083ebe  _OSStatReset                          
+0     00083eba  _OSStatReset                          
 1     0000bf07  _OSStatResetFlag                      
 1     0000bf08  _OSStatTaskCPUUsage                   
-0     00083f98  _OSStatTaskCPUUsageInit               
+0     00083f94  _OSStatTaskCPUUsageInit               
 1     0000bf09  _OSStatTaskCPUUsageMax                
 1     0000bf22  _OSStatTaskCtr                        
 1     0000bf24  _OSStatTaskCtrMax                     
@@ -1924,32 +1913,32 @@ abs   00000000  _Cla1funcsLoadSize
 1     0000c000  _OSStatTaskTCB                        
 1     0000bf34  _OSTCBCurPtr                          
 1     0000bf36  _OSTCBHighRdyPtr                      
-0     000836d0  _OSTaskChangePrio                     
-0     00083608  _OSTaskCreate                         
+0     000836cc  _OSTaskChangePrio                     
+0     00083604  _OSTaskCreate                         
 0     00087601  _OSTaskCreateHook                     
 1     0000bf28  _OSTaskCtxSwCtr                       
-0     00083073  _OSTaskDel                            
+0     0008306f  _OSTaskDel                            
 0     000875fa  _OSTaskDelHook                        
-0     000835d9  _OSTaskQFlush                         
-0     0008354c  _OSTaskQPend                          
-0     000834fd  _OSTaskQPendAbort                     
-0     00083494  _OSTaskQPost                          
+0     000835d5  _OSTaskQFlush                         
+0     00083548  _OSTaskQPend                          
+0     000834f9  _OSTaskQPendAbort                     
+0     00083490  _OSTaskQPost                          
 1     0000bf0b  _OSTaskQty                            
-0     00083470  _OSTaskRegGet                         
-0     00083458  _OSTaskRegGetID                       
+0     0008346c  _OSTaskRegGet                         
+0     00083454  _OSTaskRegGetID                       
 1     0000bf0c  _OSTaskRegNextAvailID                 
-0     00083432  _OSTaskRegSet                         
-0     000833bb  _OSTaskResume                         
+0     0008342e  _OSTaskRegSet                         
+0     000833b7  _OSTaskResume                         
 0     000875f3  _OSTaskReturnHook                     
-0     00083346  _OSTaskSemPend                        
-0     000832f0  _OSTaskSemPendAbort                   
-0     0008327e  _OSTaskSemPost                        
-0     0008324a  _OSTaskSemSet                         
-0     000831ed  _OSTaskStkChk                         
+0     00083342  _OSTaskSemPend                        
+0     000832ec  _OSTaskSemPendAbort                   
+0     0008327a  _OSTaskSemPost                        
+0     00083246  _OSTaskSemSet                         
+0     000831e9  _OSTaskStkChk                         
 0     00087578  _OSTaskStkInit                        
-0     0008316a  _OSTaskSuspend                        
+0     00083166  _OSTaskSuspend                        
 0     00087557  _OSTaskSwHook                         
-0     0008313b  _OSTaskTimeQuantaSet                  
+0     00083137  _OSTaskTimeQuantaSet                  
 1     0000bf2a  _OSTickCtr                            
 1     0000bf2c  _OSTickList                           
 0     00086d5d  _OSTimeDly                            
@@ -2017,13 +2006,13 @@ abs   00000000  _Cla1funcsLoadSize
 0     0008551b  _OS_RdyListMoveHeadToTail             
 0     000854d1  _OS_RdyListRemove                     
 0     0008553d  _OS_SchedRoundRobin                   
-0     00083eca  _OS_StatTask                          
-0     00083e6c  _OS_StatTaskInit                      
+0     00083ec6  _OS_StatTask                          
+0     00083e68  _OS_StatTaskInit                      
 0     00085501  _OS_TaskBlock                         
-0     00082f84  _OS_TaskChangePrio                    
-0     00083132  _OS_TaskInit                          
-0     00082ff5  _OS_TaskInitTCB                       
-0     00083124  _OS_TaskReturn                        
+0     00082f80  _OS_TaskChangePrio                    
+0     0008312e  _OS_TaskInit                          
+0     00082ff1  _OS_TaskInitTCB                       
+0     00083120  _OS_TaskReturn                        
 0     00086a88  _OS_TickInit                          
 0     000869d0  _OS_TickListInsert                    
 0     00086a3c  _OS_TickListInsertDly                 
@@ -2087,7 +2076,7 @@ abs   00000050  _RamfuncsRunSize
 1     00005e80  _Sdfm2Regs                            
 0     00085012  _SeizeFlashPump                       
 0     00085004  _ServiceDog                           
-0     00088855  _SetDBGIER                            
+0     00088845  _SetDBGIER                            
 0     00084e58  _ShowAllParam                         
 0     00084ec5  _SingleParamChange                    
 0     00084eb2  _SingleParamCheck                     
@@ -2141,13 +2130,13 @@ abs   00000400  __SYSMEM_SIZE
 0     00087e5d  ___TI_doflush                         
 1     0000c828  ___TI_dtors_ptr                       
 1     0000c824  ___TI_enable_exit_profile_output      
-1     0000c8a2  ___TI_ft_end                          
+1     0000c83e  ___TI_ft_end                          
 0     0008656c  ___TI_heap_check                      
 0     0008654f  ___TI_heap_largest_available          
 0     00086532  ___TI_heap_total_available            
 0     00088453  ___TI_ltoa                            
 abs   ffffffff  ___TI_pprof_out_hndl                  
-0     00082df3  ___TI_printfi                         
+0     00082def  ___TI_printfi                         
 abs   ffffffff  ___TI_prof_data_size                  
 abs   ffffffff  ___TI_prof_data_start                 
 0     00087f7c  ___TI_rd_ok                           
@@ -2166,17 +2155,17 @@ abs   ffffffff  ___text__
 1     0000c8c0  __device                              
 1     0000c740  __ftable                              
 1     0000befe  __lock                                
-0     00088826  __nop                                 
+0     0008881b  __nop                                 
 0     00000130  __nr_cmd_end_                         
 0     00000122  __nr_cmd_start_                       
-0     00088822  __register_lock                       
-0     0008881e  __register_unlock                     
+0     00088817  __register_lock                       
+0     00088813  __register_unlock                     
 0     000862ad  __shell_init                          
 1     00000400  __stack                               
 1     0000b810  __stream                              
 1     0000c980  __sys_memory                          
-0     00087fff  __system_post_cinit                   
-0     00083ffe  __system_pre_init                     
+0     0008884b  __system_post_cinit                   
+0     00087ffe  __system_pre_init                     
 1     0000c0fe  __unlock                              
 0     00088503  _abort                                
 0     0008648c  _aligned_alloc                        
@@ -2191,30 +2180,30 @@ abs   ffffffff  ___text__
 0     0008838b  _close                                
 0     00085fdc  _copy_in                              
 0     0008857d  _copysignl                            
-0     00083e27  _cotParam_Check                       
-0     00083de1  _cotParam_Deserialization             
-0     00083dd7  _cotParam_FindParamByID               
-0     000839df  _cotParam_FindParamByParamPtr         
-0     00083dc4  _cotParam_GetSerializeSize            
-0     00083d9b  _cotParam_Init                        
-0     00083d77  _cotParam_IterateList                 
-0     00083cfa  _cotParam_Load                        
-0     00083bce  _cotParam_ResetDefault                
-0     00083b72  _cotParam_Save                        
-0     00083b38  _cotParam_Serialize                   
-0     00083a9a  _cotParam_SingleParamChange           
-0     000839e9  _cotParam_SingleParamChangeImpl       
-0     0008395c  _cotParam_SingleParamCheckInput       
-0     000839a6  _cotParam_SingleParamCheckProcess     
-0     0008399b  _cotParam_SingleParamResetDefValue    
-0     00083990  _cotParam_SingleParamResetMaxValue    
-0     00083985  _cotParam_SingleParamResetMinValue    
-0     0008397e  _cotParam_SingleParamSelfCheck        
-0     00083920  _cotParam_SingleParamUpdate           
-1     0000c83e  _deviceOpen                           
+0     00083e23  _cotParam_Check                       
+0     00083ddd  _cotParam_Deserialization             
+0     00083dd3  _cotParam_FindParamByID               
+0     000839db  _cotParam_FindParamByParamPtr         
+0     00083dc0  _cotParam_GetSerializeSize            
+0     00083d97  _cotParam_Init                        
+0     00083d73  _cotParam_IterateList                 
+0     00083cf6  _cotParam_Load                        
+0     00083bca  _cotParam_ResetDefault                
+0     00083b6e  _cotParam_Save                        
+0     00083b34  _cotParam_Serialize                   
+0     00083a96  _cotParam_SingleParamChange           
+0     000839e5  _cotParam_SingleParamChangeImpl       
+0     00083958  _cotParam_SingleParamCheckInput       
+0     000839a2  _cotParam_SingleParamCheckProcess     
+0     00083997  _cotParam_SingleParamResetDefValue    
+0     0008398c  _cotParam_SingleParamResetMaxValue    
+0     00083981  _cotParam_SingleParamResetMinValue    
+0     0008397a  _cotParam_SingleParamSelfCheck        
+0     0008391c  _cotParam_SingleParamUpdate           
+1     0000c83c  _deviceOpen                           
 0     000883be  _epwm1_isr                            
 1     0000c7be  _erase_ok                             
-1     0000c8a3  _errno                                
+1     0000c83f  _errno                                
 0     00088505  _exit                                 
 0     00088044  _fclose                               
 0     00087e8c  _fflush                               
@@ -2229,7 +2218,7 @@ abs   ffffffff  ___text__
 0     000880b8  _frexpl                               
 0     00088235  _fseek                                
 1     0000c916  _gAdcData                             
-1     0000c83f  _gOS1msCnts                           
+1     0000c83d  _gOS1msCnts                           
 1     0000c91c  _gSegDisplay                          
 1     0000c919  _gStepMotorCtrl                       
 1     0000b841  _g_address                            
@@ -2256,7 +2245,7 @@ abs   ffffffff  ___text__
 0     000887e6  _memchr                               
 0     000886c3  _memcpy                               
 0     00088609  _memmove                              
-0     00088849  _memset                               
+0     0008883e  _memset                               
 0     0008645b  _minit                                
 1     0000b880  _modBus_master_test                   
 1     0000bac0  _modBus_slave_test                    
@@ -2290,7 +2279,7 @@ abs   ffffffff  ___text__
 0     00088160  _putchar                              
 0     000878d0  _puts                                 
 0     000863d7  _realloc                              
-0     00088858  _remove                               
+0     00088848  _remove                               
 0     00088483  _runADCSense                          
 0     000872b8  _runSegDisplay                        
 0     0008763c  _runStepMotorCtrl                     
@@ -2311,9 +2300,9 @@ abs   ffffffff  ___text__
 0     000883f0  _sprintf                              
 0     00090f34  _static_cmd                           
 0     000887f3  _strchr                               
-0     00088814  _strcmp                               
-0     00088850  _strcpy                               
-0     00088841  _strlen                               
+0     00088809  _strcmp                               
+0     00083ffa  _strcpy                               
+0     00088836  _strlen                               
 0     00088790  _strncpy                              
 0     0008877a  _strstr                               
 1     0000b840  _t                                    
@@ -2326,7 +2315,7 @@ abs   ffffffff  ___text__
 1     0000c4fa  _tempSensor_tempSlope                 
 0     00084ed1  _test_param                           
 0     00088718  _unlink                               
-0     00088830  _wcslen                               
+0     00088825  _wcslen                               
 0     00088731  _write                                
 abs   ffffffff  binit                                 
 0     00082000  cinit                                 
@@ -2357,54 +2346,55 @@ page  address   name
 0     00080000  code_start                            
 0     00082000  ___cinit__                            
 0     00082000  cinit                                 
-0     00082df3  ___TI_printfi                         
-0     00082f84  _OS_TaskChangePrio                    
-0     00082ff5  _OS_TaskInitTCB                       
-0     00083073  _OSTaskDel                            
-0     00083124  _OS_TaskReturn                        
-0     00083132  _OS_TaskInit                          
-0     0008313b  _OSTaskTimeQuantaSet                  
-0     0008316a  _OSTaskSuspend                        
-0     000831ed  _OSTaskStkChk                         
-0     0008324a  _OSTaskSemSet                         
-0     0008327e  _OSTaskSemPost                        
-0     000832f0  _OSTaskSemPendAbort                   
-0     00083346  _OSTaskSemPend                        
-0     000833bb  _OSTaskResume                         
-0     00083432  _OSTaskRegSet                         
-0     00083458  _OSTaskRegGetID                       
-0     00083470  _OSTaskRegGet                         
-0     00083494  _OSTaskQPost                          
-0     000834fd  _OSTaskQPendAbort                     
-0     0008354c  _OSTaskQPend                          
-0     000835d9  _OSTaskQFlush                         
-0     00083608  _OSTaskCreate                         
-0     000836d0  _OSTaskChangePrio                     
-0     00083920  _cotParam_SingleParamUpdate           
-0     0008395c  _cotParam_SingleParamCheckInput       
-0     0008397e  _cotParam_SingleParamSelfCheck        
-0     00083985  _cotParam_SingleParamResetMinValue    
-0     00083990  _cotParam_SingleParamResetMaxValue    
-0     0008399b  _cotParam_SingleParamResetDefValue    
-0     000839a6  _cotParam_SingleParamCheckProcess     
-0     000839df  _cotParam_FindParamByParamPtr         
-0     000839e9  _cotParam_SingleParamChangeImpl       
-0     00083a9a  _cotParam_SingleParamChange           
-0     00083b38  _cotParam_Serialize                   
-0     00083b72  _cotParam_Save                        
-0     00083bce  _cotParam_ResetDefault                
-0     00083cfa  _cotParam_Load                        
-0     00083d77  _cotParam_IterateList                 
-0     00083d9b  _cotParam_Init                        
-0     00083dc4  _cotParam_GetSerializeSize            
-0     00083dd7  _cotParam_FindParamByID               
-0     00083de1  _cotParam_Deserialization             
-0     00083e27  _cotParam_Check                       
-0     00083e6c  _OS_StatTaskInit                      
-0     00083ebe  _OSStatReset                          
-0     00083eca  _OS_StatTask                          
-0     00083f98  _OSStatTaskCPUUsageInit               
-0     00083ffe  __system_pre_init                     
+0     00082def  ___TI_printfi                         
+0     00082f80  _OS_TaskChangePrio                    
+0     00082ff1  _OS_TaskInitTCB                       
+0     0008306f  _OSTaskDel                            
+0     00083120  _OS_TaskReturn                        
+0     0008312e  _OS_TaskInit                          
+0     00083137  _OSTaskTimeQuantaSet                  
+0     00083166  _OSTaskSuspend                        
+0     000831e9  _OSTaskStkChk                         
+0     00083246  _OSTaskSemSet                         
+0     0008327a  _OSTaskSemPost                        
+0     000832ec  _OSTaskSemPendAbort                   
+0     00083342  _OSTaskSemPend                        
+0     000833b7  _OSTaskResume                         
+0     0008342e  _OSTaskRegSet                         
+0     00083454  _OSTaskRegGetID                       
+0     0008346c  _OSTaskRegGet                         
+0     00083490  _OSTaskQPost                          
+0     000834f9  _OSTaskQPendAbort                     
+0     00083548  _OSTaskQPend                          
+0     000835d5  _OSTaskQFlush                         
+0     00083604  _OSTaskCreate                         
+0     000836cc  _OSTaskChangePrio                     
+0     0008391c  _cotParam_SingleParamUpdate           
+0     00083958  _cotParam_SingleParamCheckInput       
+0     0008397a  _cotParam_SingleParamSelfCheck        
+0     00083981  _cotParam_SingleParamResetMinValue    
+0     0008398c  _cotParam_SingleParamResetMaxValue    
+0     00083997  _cotParam_SingleParamResetDefValue    
+0     000839a2  _cotParam_SingleParamCheckProcess     
+0     000839db  _cotParam_FindParamByParamPtr         
+0     000839e5  _cotParam_SingleParamChangeImpl       
+0     00083a96  _cotParam_SingleParamChange           
+0     00083b34  _cotParam_Serialize                   
+0     00083b6e  _cotParam_Save                        
+0     00083bca  _cotParam_ResetDefault                
+0     00083cf6  _cotParam_Load                        
+0     00083d73  _cotParam_IterateList                 
+0     00083d97  _cotParam_Init                        
+0     00083dc0  _cotParam_GetSerializeSize            
+0     00083dd3  _cotParam_FindParamByID               
+0     00083ddd  _cotParam_Deserialization             
+0     00083e23  _cotParam_Check                       
+0     00083e68  _OS_StatTaskInit                      
+0     00083eba  _OSStatReset                          
+0     00083ec6  _OS_StatTask                          
+0     00083f94  _OSStatTaskCPUUsageInit               
+0     00083ffa  _strcpy                               
+0     00083fff  _OSCfg_Init                           
 0     00084000  _XINT5_ISR                            
 0     0008400a  _XINT4_ISR                            
 0     00084014  _XINT3_ISR                            
@@ -2767,8 +2757,7 @@ page  address   name
 0     00087f41  ___TI_wrt_ok                          
 0     00087f7c  ___TI_rd_ok                           
 0     00087fa8  _c_int00                              
-0     00087ffe  _OSCfg_Init                           
-0     00087fff  __system_post_cinit                   
+0     00087ffe  __system_pre_init                     
 0     00088000  ___TI_closefile                       
 0     00088044  _fclose                               
 0     0008805d  _HOSTlseek                            
@@ -2844,21 +2833,19 @@ page  address   name
 0     000887d8  FD$$SUB                               
 0     000887e6  _memchr                               
 0     000887f3  _strchr                               
-0     000887ff  U$$DIV                                
-0     00088804  U$$MOD                                
-0     0008880a  _ISR_ILLEGAL                          
-0     00088814  _strcmp                               
-0     0008881e  __register_unlock                     
-0     00088822  __register_lock                       
-0     00088826  __nop                                 
-0     00088827  FD$$NEG                               
-0     00088830  _wcslen                               
-0     00088841  _strlen                               
-0     00088849  _memset                               
-0     00088850  _strcpy                               
-0     00088855  _SetDBGIER                            
-0     00088858  _remove                               
-0     0008885b  _InitSCI_BSP                          
+0     000887ff  _ISR_ILLEGAL                          
+0     00088809  _strcmp                               
+0     00088813  __register_unlock                     
+0     00088817  __register_lock                       
+0     0008881b  __nop                                 
+0     0008881c  FD$$NEG                               
+0     00088825  _wcslen                               
+0     00088836  _strlen                               
+0     0008883e  _memset                               
+0     00088845  _SetDBGIER                            
+0     00088848  _remove                               
+0     0008884b  __system_post_cinit                   
+0     0008884c  _InitSCI_BSP                          
 0     00090945  _OSDbg_DbgEn                          
 0     00090b14  _PieVectTableInit                     
 0     00090cd4  __ctypes_                             
@@ -3073,13 +3060,13 @@ page  address   name
 1     0000c82e  _OSPrioTbl                            
 1     0000c832  _SCI                                  
 1     0000c83a  _Math_RandSeedCur                     
-1     0000c83e  _deviceOpen                           
-1     0000c83f  _gOS1msCnts                           
+1     0000c83c  _deviceOpen                           
+1     0000c83d  _gOS1msCnts                           
+1     0000c83e  ___TI_ft_end                          
+1     0000c83f  _errno                                
 1     0000c84e  _sg_length                            
 1     0000c84f  _g_cTest                              
 1     0000c880  _g_tTestVal                           
-1     0000c8a2  ___TI_ft_end                          
-1     0000c8a3  _errno                                
 1     0000c8c0  __device                              
 1     0000c908  _flag                                 
 1     0000c909  _taskCtrlCnts                         
@@ -3141,4 +3128,4 @@ abs   ffffffff  binit
 abs   ffffffff  etext                                 
 abs   ffffffff  pinit                                 
 
-[801 symbols]
+[799 symbols]

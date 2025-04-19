@@ -17,12 +17,22 @@
 #ifndef COMMON_H
 #define COMMON_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef HOST_SIM
+/// Simulation platform head file
+#else
+/// Real platform head file
+#endif
+
 #include <stdint.h>
 
 /*
 *********************************************************************************************************
-*                                              DATA TYPES
-*                                         (Compiler Specific)
+*                                              DATA API
+*                                        (外部开放的数据接口)
 *********************************************************************************************************
 */
 
@@ -52,6 +62,23 @@ typedef signed long     INT32S;    /* Signed   32 bit quantity                  
 typedef float           FP32;            /* Single precision floating point                      */
 typedef long double     FP64;      /* Double precision floating point                      */
 
+
+/*
+*********************************************************************************************************
+*                                              FUNCTION API
+*                                         (外部开放的函数接口)
+*********************************************************************************************************
+*/
+
+#if defined(HOST_SIM)
+// Simulation platform function
 #endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* COMMON_H */
+
 
 
