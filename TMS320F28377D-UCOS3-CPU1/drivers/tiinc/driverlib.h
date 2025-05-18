@@ -80,6 +80,8 @@
 
 #include "driver_inclusive_terminology_mapping.h"
 
+#include "rom.h"
+#include "rom_map.h"
 #endif  // end of DRIVERLIB_H definition
 
 //

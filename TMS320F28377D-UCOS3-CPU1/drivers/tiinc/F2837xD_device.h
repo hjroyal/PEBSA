@@ -332,7 +332,6 @@ typedef unsigned long bp_32 __attribute__((byte_peripheral));
 #include "F2837xD_gpio.h"                // General Purpose I/O Registers
 #include "F2837xD_i2c.h"
 #include "F2837xD_input_xbar.h"
-#include "F2837xD_ipc.h"
 #include "F2837xD_mcbsp.h"
 #include "F2837xD_memconfig.h"
 #include "F2837xD_nmiintrupt.h"          // NMI Interrupt Registers
@@ -346,6 +345,8 @@ typedef unsigned long bp_32 __attribute__((byte_peripheral));
 #include "F2837xD_upp.h"
 #include "F2837xD_xbar.h"
 #include "F2837xD_xint.h"                // External Interrupts
+
+
 
 //
 // byte_peripheral attribute is only supported on the C28

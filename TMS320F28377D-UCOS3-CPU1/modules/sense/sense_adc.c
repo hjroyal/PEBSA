@@ -40,4 +40,6 @@ void runADCSense(ADC_DATA *dp) {
     dp->out_adc_a1 = ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER1);
     adcAResult2 = ((ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER2) + ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER3) + ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER4) + ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER5) + ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER6) + ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER7) + ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER8) + ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER9)) >> 3);
     dp->out_adc_a2 = GetTemperatureC(adcAResult2);
+
+
 }

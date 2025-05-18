@@ -14,81 +14,87 @@
  * </table>
  */
 
- #include "include.h"
+#include "include.h"
 
 Uint16 ChipErase(void);
 Uint16 FLASHTEST(Uint16 Length);
 
 void run_ex_flash_test(void);
 
-  Uint16 erase_ok = 9;
-  Uint16 flash_ok = 9;
+Uint16 erase_ok = 9;
+Uint16 flash_ok = 9;
 void run_ex_flash_test(void) {
-
-  erase_ok = ChipErase();
-  asm(" ESTOP0");
-  flash_ok =FLASHTEST(0xFFFF);
-  asm(" ESTOP0");
-  FLASHTEST(0xFFFF);
-  asm(" ESTOP0");
+    erase_ok = ChipErase();
+    asm(" ESTOP0");
+    flash_ok = FLASHTEST(0xFFFF);
+    asm(" ESTOP0");
+    FLASHTEST(0xFFFF);
+    asm(" ESTOP0");
 }
 
 Uint16 ChipErase(void) {
-  Uint16 Data;
-  Uint32 TimeOut, i;
-  *(EX_FLASH_ADDR_START + 0x5555) = 0xAAAA;
-  *(EX_FLASH_ADDR_START + 0x2AAA) = 0x5555;
-  *(EX_FLASH_ADDR_START + 0x5555) = 0x8080;
-  *(EX_FLASH_ADDR_START + 0x5555) = 0xAAAA;
-  *(EX_FLASH_ADDR_START + 0x2AAA) = 0x5555;
-  *(EX_FLASH_ADDR_START + 0x5555) = 0x1010;
-  i = 0;
-  TimeOut = 0;
-  while (i < 5) {
-    Data = *(EX_FLASH_ADDR_START + 0x3FFFF);
-    if (Data == 0xFFFF)
-      i++;
-    else
-      i = 0;
-    if (++TimeOut > 0x1000000)
-      return (TimeOutErr);
-  }
-  for (i = 0; i < 0x40000; i++) {
-    Data = *(EX_FLASH_ADDR_START + i);
-    if (Data != 0xFFFF)
-      return (EraseErr);
-  }
-  return (EraseOK);
+    Uint16 Data;
+    Uint32 TimeOut, i;
+
+    /**以下过程需要严格遵守*/
+    *(EX_FLASH_ADDR_START + 0x5555) = 0xAAAA; //需要对 FLASH 的 0x5555 单元写 0xAAAA
+    *(EX_FLASH_ADDR_START + 0x2AAA) = 0x5555; //需要对 FLASH 的 0x2AAA 单元写 0x5555
+    *(EX_FLASH_ADDR_START + 0x5555) = 0x8080; //需要对 FLASH 的 0x5555 单元写 0x8080
+    *(EX_FLASH_ADDR_START + 0x5555) = 0xAAAA; //需要对 FLASH 的 0x5555 单元写 0xAAAA
+    *(EX_FLASH_ADDR_START + 0x2AAA) = 0x5555; //需要对 FLASH 的 0x2AAA 单元写 0x5555
+    *(EX_FLASH_ADDR_START + 0x5555) = 0x1010; //需要对 FLASH 的 0x5555 单元写 0x1010
+
+    /**检测 FLASH 是否擦除正确，正确的话返回 EraseOK.；否则返回 EraseErr，标明擦除失败*/
+    i = 0;
+    TimeOut = 0;
+
+    while (i < 5) {
+        Data = *(EX_FLASH_ADDR_START + 0x3FFFF);
+        if (Data == 0xFFFF)
+            i++;
+        else
+            i = 0;
+        if (++TimeOut > 0x1000000)
+            return (TimeOutErr);
+    }
+
+    for (i = 0; i < 0x40000; i++) {
+        Data = *(EX_FLASH_ADDR_START + i);
+        if (Data != 0xFFFF)
+            return (EraseErr);
+    }
+
+    return (EraseOK);
 }
 
-
 Uint16 FLASHTEST(Uint16 Length) {
-  Uint32 i, TimeOut;
-  Uint16 Data1, Data2, j, t;
-  for (i = 0; i < Length; i++) // 写部分
-  {
-    *(EX_FLASH_ADDR_START + 0x5555) = 0x00AA;
-    *(EX_FLASH_ADDR_START + 0x2AAA) = 0x0055;
-    *(EX_FLASH_ADDR_START + 0x5555) = 0x00A0;
-    *(EX_FLASH_ADDR_START + i) = i;
-    TimeOut = 0;
-    j = 0;
-    while (j < 5) {
-      Data1 = *(EX_FLASH_ADDR_START + i);
-      Data2 = *(EX_FLASH_ADDR_START + i);
-      if (Data1 == Data2)
-        j++;
-      else
+    Uint32 i, TimeOut;
+    Uint16 Data1, Data2, j, t;
+    for (i = 0; i < Length; i++) // 写部分
+    {
+        //*********以下 3 行过程需要严格遵守********************//
+        *(EX_FLASH_ADDR_START + 0x5555) = 0x00AA;
+        *(EX_FLASH_ADDR_START + 0x2AAA) = 0x0055;
+        *(EX_FLASH_ADDR_START + 0x5555) = 0x00A0;
+        *(EX_FLASH_ADDR_START + i) = i;
+        TimeOut = 0;
         j = 0;
-      if (++TimeOut > 0x1000000)
-        return (TimeOutErr); // flash写自然数无响应
+        while (j < 5) {
+            Data1 = *(EX_FLASH_ADDR_START + i);
+            Data2 = *(EX_FLASH_ADDR_START + i);
+            if (Data1 == Data2)
+                j++;
+            else
+                j = 0;
+            if (++TimeOut > 0x1000000)
+                return (TimeOutErr); // flash写自然数无响应
+        }
     }
-  }
 
-  for (i = 0; i < Length; i++) {
-    t = *(EX_FLASH_ADDR_START + i);
-    if (t != i)
-      return (EraseErr);
-  }
-  return (WriteOK);
+    for (i = 0; i < Length; i++) {
+        t = *(EX_FLASH_ADDR_START + i);
+        if (t != i)
+            return (EraseErr);
+    }
+    return (WriteOK);
 }

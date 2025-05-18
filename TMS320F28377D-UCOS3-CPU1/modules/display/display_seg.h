@@ -33,6 +33,7 @@ extern "C" {
 typedef struct {
     u16 *in_dsp_temp;       ///>hj 20250416 板载DSP温度
     u16 *in_dth11_temp;     ///>hj 20250416 DTH11温度
+    u16 *in_rtc_time;      ///>hj 20250416 RTC时间
     u16 parm_sensor_sel;    ///>hj 20250411 温度传感器选择 0:板载DSP 1:DTH11
     u16 parm_en;            ///>hj 20250411 模块使能
 } SEG_DSIPLAY;

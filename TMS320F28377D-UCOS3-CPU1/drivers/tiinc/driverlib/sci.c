@@ -291,8 +291,6 @@ SCI_disableInterrupt(uint32_t base, uint32_t intFlags)
     }
 }
 
-
-
 //*****************************************************************************
 //
 // SCI_getInterruptStatus

@@ -14,8 +14,8 @@
  * </table>
  */
 
-#ifndef SENSE_H
-#define SENSE_H
+#ifndef SENSE_ADC_H
+#define SENSE_ADC_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -47,6 +47,6 @@ void runADCSense(ADC_DATA *dp);
 }
 #endif
 
-#endif /* SENSE_H */
+#endif /* SENSE_ADC_H */
 
 

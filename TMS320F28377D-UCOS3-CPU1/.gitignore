@@ -1,3 +1,5 @@
-myProj/Debug
-myProj/Release
+user_cpu1/Debug
+user_cpu1/Release
+user_cpu1/understand
+user_cpu1/output
 *.clangd

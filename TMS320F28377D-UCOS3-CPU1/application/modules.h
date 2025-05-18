@@ -27,10 +27,14 @@
 #include "gpio_bsp.h"
 #include "pwm_bsp.h"
 #include "sci_bsp.h"
+#include "i2c_bsp.h"
 
 //control
 #include "control_pwm.h"
 #include "control_step_motor.h"
+#include "pid.h"
+#include <PergaMOD.h>
+
 //protection
 
 
@@ -50,9 +54,13 @@
 #include "cot_param_type.h"
 #include "display_seg.h"
 #include "control_parameter.h"
+#include "ustdlib.h"
+#include "app_version.h"
 
 //calculate
-#include "software_filter.h"
-#include "interpolation.h"
+#include "filter.h"
+#include "filter_fo.h"
+#include "filter_so.h"
+#include "cbuffer.h"
 
 #endif /* MODULE_INC_H */

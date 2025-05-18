@@ -1,0 +1,14 @@
+{
+  "clientRemote": "",
+  "gitRemote": "",
+  "gitSha": "",
+  "treeEntries": [],
+  "auditedFiles": [
+    {
+      "path": "bsp\\sci_bsp.c",
+      "author": "hjroyal"
+    }
+  ],
+  "partiallyAuditedFiles": [],
+  "resolvedEntries": []
+}

@@ -58,9 +58,9 @@ static void InitStepMotorIO(void) {
  * @date 2025-04-12
  */
 void parmInitStepMotorCtrl(STEP_MOTOR_CTRL *dp) {
-    dp->parm_poweron_seq = 1;  /// 步进机四相通电分配顺序
+    dp->parm_poweron_seq  = 1; /// 步进机四相通电分配顺序
     dp->parm_rotation_dir = 1; // 步进机转动方向标志direct_st，1正向，0反向
-    dp->parm_en = 0;      // 步进机控制使能标志ctrl_en，1使能，0禁止
+    dp->parm_en           = 0; // 步进机控制使能标志ctrl_en，1使能，0禁止
 }
 
 /**

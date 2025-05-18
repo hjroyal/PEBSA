@@ -145,14 +145,14 @@ extern "C"
 // for each IPC instance
 //
 //*****************************************************************************
-#define IPC_INT0        0x0U  //!< IPC Interrupt 0
-#define IPC_INT1        0x1U  //!< IPC Interrupt 1
-#define IPC_INT2        0x2U  //!< IPC Interrupt 2
-#define IPC_INT3        0x3U  //!< IPC Interrupt 3
-#define IPC_INT4        0x4U  //!< IPC Interrupt 4
-#define IPC_INT5        0x5U  //!< IPC Interrupt 5
-#define IPC_INT6        0x6U  //!< IPC Interrupt 6
-#define IPC_INT7        0x7U  //!< IPC Interrupt 7
+#define IPC_INT0        0x0000U  //!< IPC Interrupt 0
+#define IPC_INT1        0x0001U  //!< IPC Interrupt 1
+#define IPC_INT2        0x0002U  //!< IPC Interrupt 2
+#define IPC_INT3        0x0003U  //!< IPC Interrupt 3
+#define IPC_INT4        0x0004U  //!< IPC Interrupt 4
+#define IPC_INT5        0x0005U  //!< IPC Interrupt 5
+#define IPC_INT6        0x0006U  //!< IPC Interrupt 6
+#define IPC_INT7        0x0007U  //!< IPC Interrupt 7
 
 //*****************************************************************************
 //

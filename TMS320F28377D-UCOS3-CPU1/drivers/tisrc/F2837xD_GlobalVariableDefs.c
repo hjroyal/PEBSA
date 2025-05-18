@@ -722,25 +722,25 @@ volatile struct I2C_REGS I2cbRegs;
 volatile struct INPUT_XBAR_REGS InputXbarRegs;
 #endif // ifdef CPU1
 
-#ifdef CPU1
-//----------------------------------------
-#ifdef __cplusplus
-#pragma DATA_SECTION("IpcRegsFile")
-#else
-#pragma DATA_SECTION(IpcRegs,"IpcRegsFile");
-#endif
-volatile struct IPC_REGS_CPU1 IpcRegs;
-#endif // ifdef CPU1
+// #ifdef CPU1
+// //----------------------------------------
+// #ifdef __cplusplus
+// #pragma DATA_SECTION("IpcRegsFile")
+// #else
+// #pragma DATA_SECTION(IpcRegs,"IpcRegsFile");
+// #endif
+// volatile struct IPC_REGS_CPU1 IpcRegs;
+// #endif // ifdef CPU1
 
-#ifdef CPU2
-//----------------------------------------
-#ifdef __cplusplus
-#pragma DATA_SECTION("IpcRegsFile")
-#else
-#pragma DATA_SECTION(IpcRegs,"IpcRegsFile");
-#endif
-volatile struct IPC_REGS_CPU2 IpcRegs;
-#endif // ifdef CPU2
+// #ifdef CPU2
+// //----------------------------------------
+// #ifdef __cplusplus
+// #pragma DATA_SECTION("IpcRegsFile")
+// #else
+// #pragma DATA_SECTION(IpcRegs,"IpcRegsFile");
+// #endif
+// volatile struct IPC_REGS_CPU2 IpcRegs;
+// #endif // ifdef CPU2
 
 //----------------------------------------
 #ifdef __cplusplus

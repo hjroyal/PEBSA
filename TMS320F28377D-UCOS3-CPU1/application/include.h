@@ -21,6 +21,8 @@
 #error Incorrect project settings!
 #endif
 
+#define DEBUG_PRINT_EN 1
+
 //ucos3
 #include <app_cfg.h>
 #include <cpu_core.h>
@@ -29,17 +31,18 @@
 #include <os.h>
 
 //f2837x
-#include "F28x_Project.h" 
-#include "driverlib.h"
+#include "F28x_Project.h"  //外设库
+#include "driverlib.h"     //驱动库
 #include "device.h"
+
+
 
 //application
 #include "modules.h"
 #include "app.h"
-#include "nr_micro_shell.h"
 #include "stdint.h"
 
-#define PEBSA_APP_VER  100      /* Version of app(Vx.yy mult. by 100)    */
+
 
 #define PLX_ASSERT(x) do {\
    if(!(x)){\

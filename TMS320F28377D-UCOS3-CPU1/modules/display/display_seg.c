@@ -123,6 +123,19 @@ static void display_temp(int16 temp) {
     set_seg(&digits);
 }
 
+///>hj 20250511 更新时间太慢
+static void display_time(void) {
+    unsigned char digits[4];
+    digits[0] = rtc_sec % 10;
+    rtc_sec /= 10;
+    digits[1] = rtc_sec % 10;
+    digits[2] = rtc_min % 10;
+    rtc_min /= 10;
+    digits[3] = rtc_min % 10;
+
+    set_seg(&digits);
+}
+
 /**
  * @brief 显示模块参数初始化
  * @param[in,out] dp             :
@@ -151,8 +164,10 @@ void initSegDisplay(SEG_DSIPLAY *dp) {
  */
 void runSegDisplay(SEG_DSIPLAY *dp) {
     if (dp->parm_en) {
-        if (dp->parm_sensor_sel) {
-            display_temp((*(dp->in_dth11_temp)));
+        if (dp->parm_sensor_sel == 1) {
+            // display_temp((*(dp->in_dth11_temp)));
+        } else if (dp->parm_sensor_sel == 2) {
+            display_time();
         } else {
             display_temp((*(dp->in_dsp_temp)));
         }
